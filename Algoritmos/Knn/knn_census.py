@@ -47,12 +47,22 @@ classe = labelEncoder_classe.fit_transform(classe)
 standardScaler = StandardScaler()
 previsores = standardScaler.fit_transform(previsores)
 
-###########################CRIAÇÃO BASE DE TESTE###############################
 
-from sklearn.model_selection import train_test_split
-previsores_treinamento,previsores_teste,classe_treinamento, classe_teste  = train_test_split(previsores,classe,test_size=0.15,random_state=0)
+# ===========================CRIAÇÃO BASE=================================
+# from sklearn.model_selection import train_test_split
+# previsores_treinamento,previsores_teste,classe_treinamento, classe_teste  = train_test_split(previsores,classe,test_size=0.15,random_state=0)
+#  
+# =============================================================================
+from sklearn.neighbors import KNeighborsClassifier
+classificador = KNeighborsClassifier(n_neighbors=5, metric="minkowski", p = 2)
+classificador.fit(previsores_treinamento, classe_treinamento)
 
+previsoes = classificador.predict(previsores_teste)
 
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+matriz = confusion_matrix(classe_teste, previsoes)
+precisao = accuracy_score(classe_teste, previsoes)
 
 
 
