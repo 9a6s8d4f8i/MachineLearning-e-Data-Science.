@@ -69,10 +69,13 @@ previsores = scaler.fit_transform(previsores) #Valores escalonados
 ###########################CRIAÇÃO BASE DE TESTE###############################
 
 from sklearn.model_selection import train_test_split
-classe_teste,previsores_teste,classe_treinamento,previsores_treinamento  = train_test_split(previsores,classe,test_size=0.25,random_state=0)
+previsores_treinamento,previsores_teste, classe_treinamento,classe_teste  = train_test_split(previsores,classe,test_size=0.25,random_state=0)
 
 
 #
+from sklearn.metrics import confusion_matrix, accuracy_score
+precisao = accuracy_score(classe_teste, previsoes)
+matriz = confusion_matrix(classe_teste, previsoes)
 
 
 
