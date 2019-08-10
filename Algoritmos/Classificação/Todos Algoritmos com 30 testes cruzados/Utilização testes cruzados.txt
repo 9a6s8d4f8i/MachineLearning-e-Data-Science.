@@ -1,0 +1,3 @@
+Utilizar esse método de teste é mais eficiente do que o utilizado nos 
+primeiros algoritmos (Separar a base de teste em previsores e classes) pois dessa forma é possível evitar escolhas de previsores menos confiáveis
+perdendo também bons previsores
